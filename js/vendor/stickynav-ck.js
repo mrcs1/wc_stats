@@ -1,0 +1,1 @@
+$(document).ready(function(){$(document).scroll(function(){var e=$(this).scrollTop(),t=$(".rte-header").position();e>t.top?$("nav.ww1").css({position:"fixed",top:"0"}):$("nav.ww1").css({position:"static",top:"auto"})})});
