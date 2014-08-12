@@ -1,0 +1,216 @@
+// IMPORTS
+@import "type";
+@import "mixins";
+
+
+// BREAKS
+$small: 440px;
+$medium: 768px;
+$large: 1024px;
+
+// COLOUR
+$blk: rgba(0,0,0,1);
+$white: rgba(255,255,255,1);
+$grey: rgba(74,74,74,1);
+$green: rgba(43,155,57,1);
+$blue: rgba(41,171,226,1);
+::selection {background:$blue;color: $white;}
+::-moz-selection {background:$blue;color: $white;}
+
+
+body {
+	background: $white;
+	@include font-reg(16px);
+
+nav.wc {
+	height: 80px;
+	background-color: $blk;
+	// position: fixed;
+	z-index: 9999;
+	width: 100%;
+	padding: 0;
+
+	@media only screen and (max-width: 980px) {
+		height: 48px;
+		}
+
+	ul {
+		width: auto;
+		margin: 14px auto 0 auto;
+		height: 60px;
+		list-style: none;
+	
+	@media only screen and (max-width: 980px) {
+		display: table;
+		margin-left: 6px;
+		}
+
+	}
+
+	ul li {
+
+		display: inline;
+		@include smallcaps(11px);
+		font-weight: 600;
+		text-align: left;
+		float: left;
+		margin: .6em;
+		width: 76px;
+		height: 59px;
+		border-bottom: 5px solid rgba($white,.1);
+
+	a {
+		text-decoration: none !important;
+		@include transition;
+
+		&:hover {
+			color: $blk;
+			text-decoration: none !important;
+		}
+
+		&:active {
+			color: $blk;
+			text-decoration: none !important;
+		}
+	}
+	
+
+		.external {
+			color: rgba($white,.5)
+		}
+	}
+}}
+
+.spacer {
+	height:50px;
+}
+
+.logo_fixed {
+	margin: 0 0 0 0;
+	position: relative;
+	
+		@media only screen and (max-width: 980px) {
+		display:block;
+		margin: 0 0 0 0px;
+		height: 48px;
+		
+	}
+
+	img {
+		height: 100%;
+		width: auto;
+	}
+}
+
+//sections 
+
+.white {
+	background: $white;
+	padding: 0 0 40px 0;
+	color: $grey;
+}
+
+.green {
+	background: $green;
+	color: $white;
+	padding: 0 0 40px 0;
+}
+
+.grey {
+	background: rgba($grey,.1);
+	color: $grey;
+}
+
+.black {
+	background: $blk;
+	color: $white;
+	padding: 0 0 40px 0;
+}
+
+.pitch {
+	background-image: url(../img/streams_bg.png);
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+	display: block;
+	padding: 0 0 40px 0;
+	background-color: rgba($green,.8);
+}
+
+.jersey {
+	margin-bottom: 48px;
+	width: 100%;
+}
+
+// type
+h1 {
+	@include font-reg(55px,60px);
+	margin: 0 0 .5em 0;
+	padding-bottom: 24px;
+	color: $green;
+
+		@media only screen and (max-width: $medium) {
+		@include font-reg(36px,36px !important);
+	}
+
+}
+
+h2 {
+	@include font-reg(36px,44px);
+	margin: 0 0 .5em 0;
+	padding-bottom: 24px;
+	color: $green;
+
+		@media only screen and (max-width: $medium) {
+		@include font-reg(21px,27px !important);
+	}
+
+}
+
+h3 {
+	@include smallcaps(21px);
+	font-weight: normal;
+	margin: 0 0 0 0;
+	text-align: center;
+	letter-spacing: 2px;
+	padding-top: 36px;
+	padding-bottom: 6px;
+	margin-top: 12px !important;
+	text-transform: uppercase;
+
+		@media only screen and (max-width: $medium) {
+			@include smallcaps(14px);
+		}
+
+}
+
+p {
+	@include font-reg(20px,27px);
+}
+
+a {
+	color: darken($green,10%);
+}
+
+.center {
+	text-align: center;
+	@include font-reg(27px,32px);
+}
+
+.line {
+	padding-top: 36px;
+	padding-bottom: 24px;
+	margin-top: 12px !important;
+	border-top: .15rem dotted rgba($blk,.5);
+}
+
+
+
+
+
+.rte-header nav, .rte-footer .footer-sections, .rte-footer .footer-additional .additional-section {
+max-width: 61.875rem;
+}

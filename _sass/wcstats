@@ -1,0 +1,86 @@
+// IMPORTS
+@import "type";
+@import "mixins";
+
+
+// BREAKS
+$small: 440px;
+$medium: 768px;
+$large: 1024px;
+
+// COLOUR
+$blk: rgba(0,0,0,1);
+$white: rgba(255,255,255,1);
+$grey: rgbe(74,74,74,1);
+$green: rgba(43,155,57,1);
+$blue: rgba(41,171,226,1);
+::selection {background:$blue;color: $white;}
+::-moz-selection {background:$blue;color: $white;}
+
+
+body {
+	background: $white;
+	@include font-reg(16px);
+
+nav.wc {
+	height: 80px;
+	background-color: $gold;
+	// position: fixed;
+	z-index: 9999;
+	width: 100%;
+	padding: 0;
+
+	@media only screen and (max-width: 980px) {
+		height: 48px;
+		}
+
+	ul {
+		width: auto;
+		margin: 14px auto 0 auto;
+		height: 60px;
+		list-style: none;
+	
+	@media only screen and (max-width: 980px) {
+		display: table;
+		margin-left: 6px;
+		}
+
+	}
+
+	ul li {
+
+		display: inline;
+		@include smallcaps(11px);
+		font-weight: 600;
+		text-align: left;
+		float: left;
+		margin: .6em;
+		width: 76px;
+		height: 59px;
+		border-bottom: 5px solid rgba($white,.1);
+
+	a {
+		text-decoration: none !important;
+		@include transition;
+
+		&:hover {
+			color: $blk;
+			text-decoration: none !important;
+		}
+
+		&:active {
+			color: $blk;
+			text-decoration: none !important;
+		}
+	}
+	
+		.circle_number {
+			background: $gold;
+			color: $blk;
+		}
+
+		.external {
+			color: rgba($white,.5)
+		}
+	}
+}

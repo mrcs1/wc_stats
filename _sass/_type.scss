@@ -1,0 +1,83 @@
+// Type
+$lineheight-multiplier: 1.2;
+$default-lineheight: -1;
+// Must be the px font-size on your html element for proper rem calculation.
+$base-font-size: 16px;
+$base-font: "FreightSans-Book", freight-sans-pro, helvetica, arial, sans-serif;
+$headline-font: "FreightSans-Light", freight-sans-pro, helvetica, arial, sans-serif;
+
+ 
+/**
+ * Just specify font-size, don't override current font.
+ */
+@mixin font-size($fontsize, $lineheight: $default-lineheight, $base: $base-font-size) {
+  @if ($fontsize != 'auto') {
+    $lineheight: _normalize_lineheight($fontsize, $lineheight);
+  
+    font-size: $fontsize;
+    font-size: #{$fontsize/$base}rem;
+    line-height: $lineheight;
+    line-height: #{$lineheight/$base}rem;
+  }
+}
+ 
+/**
+ * The "normal" weight font, usually weight 400
+ */
+@mixin font-reg($fontsize, $lineheight: $default-lineheight) {
+  @include _font_setup(freight-sans-pro, $fontsize, $lineheight);
+  font-weight: normal;
+}
+
+/**
+ * The "headline" weight font
+ */
+@mixin headline($fontsize, $lineheight: $default-lineheight) {
+  @include _font_setup(freight-sans-pro, $fontsize, $lineheight);
+  font-weight: 300;
+}
+
+/**
+ * The "small caps" weight font
+ */
+@mixin smallcaps($fontsize, $lineheight: $default-lineheight) {
+  @include _font_setup(freight-sans-pro, $fontsize, $lineheight);
+  font-weight: 600;
+}
+ 
+/**
+ * Helper function to normalize the line-height. Provides an easy way to
+ * handle 'auto' and unspecified lineheight values.
+ */
+@function _normalize_lineheight($fontsize, $lineheight) {
+  // if $fontsize is 'auto', we won't be outputting a font-size or line-height
+  // so it doesn't matter what it is.
+  @if ($fontsize == 'auto') {
+    @return 0;
+  }
+  @if ($lineheight == $default-lineheight) {
+    @return $fontsize * $lineheight-multiplier;
+  }
+  @return $lineheight;
+}
+ 
+/**
+ * Primary helper to get the font bits output correctly
+ */
+@mixin _font_setup($font, $fontsize, $lineheight, $font-fallback: $base-font) {
+  $lineheight: _normalize_lineheight($fontsize, $lineheight);
+  @include _font_family($font, $font-fallback);
+  
+  // Sometimes you just want the font-family, not the font-size
+  @if ($fontsize != 'auto') {
+    @include font-size($fontsize, $lineheight);
+  }
+}
+  
+@mixin _font_family($font, $font-fallback) {
+  @if ($font == 'base') {
+    font-family: $base-font;
+  } @else {
+    font-family: $font, $font-fallback;
+  }
+}
